@@ -1,4 +1,4 @@
- - Integration testing
+ - **Integration testing**
    - Definition: Integration testing is the phase in software testing in which individual software modules are combined and tested as a group. Integration testing is conducted to evaluate the compliance of a system or component with specified functional requirements
   - Tech:
     - SpringBootTest to configure and up the Spring project to be tested 
