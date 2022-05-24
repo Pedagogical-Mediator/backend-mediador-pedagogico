@@ -6,4 +6,5 @@ spring:
     name: gateway
 eureka:
   client:
-    eureka-server-port: 8762
+    service-url:
+      defaultZone: http://localhost:8762/eureka
