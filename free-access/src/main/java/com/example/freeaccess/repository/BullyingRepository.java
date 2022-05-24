@@ -1,6 +1,7 @@
-package com.example.backapi.bullying.repositories;
+package com.example.freeaccess.repository;
 
-import com.example.backapi.bullying.domain.Bullying;
+
+import com.example.freeaccess.domain.bullying.Bullying;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
