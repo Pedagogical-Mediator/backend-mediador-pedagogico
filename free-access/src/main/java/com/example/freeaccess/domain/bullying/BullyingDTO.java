@@ -47,4 +47,10 @@ public class BullyingDTO {
     public void setFormURL(String formURL) {
         this.formURL = formURL;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        BullyingDTO bullying = (BullyingDTO) obj;
+        return this.description.equals(bullying.getDescription()) && this.formURL.equals(bullying.getFormURL()) && this.image.equals(bullying.getImage());
+    }
 }

@@ -1,8 +1,8 @@
 package com.example.freeaccess.service.bullying;
 
-import com.example.freeaccess.config.ModelMapper;
 import com.example.freeaccess.domain.bullying.BullyingDTO;
 import com.example.freeaccess.repository.BullyingRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +17,7 @@ public class FindBullying {
     }
 
     public BullyingDTO execute() {
-        return this.modelMapper.modelMapper().map(this.repository.findAll().stream().findFirst().orElseThrow(), BullyingDTO.class);
+        return this.modelMapper.map(this.repository.findAll().stream().findFirst().orElseThrow(), BullyingDTO.class);
     }
 
 }

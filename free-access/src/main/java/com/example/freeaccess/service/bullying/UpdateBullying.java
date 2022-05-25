@@ -1,9 +1,9 @@
 package com.example.freeaccess.service.bullying;
 
-import com.example.freeaccess.config.ModelMapper;
 import com.example.freeaccess.domain.bullying.Bullying;
 import com.example.freeaccess.domain.bullying.BullyingDTO;
 import com.example.freeaccess.repository.BullyingRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,11 +21,11 @@ public class UpdateBullying {
         Bullying bullying = this.repository.findAll().stream().findAny().orElse(new Bullying());
 
         bullyingDTO.setId(bullying.getId());
-        modelMapper.modelMapper().map(bullyingDTO, bullying);
+        modelMapper.map(bullyingDTO, bullying);
 
         bullying = this.repository.save(bullying);
 
-        return modelMapper.modelMapper().map(bullying, BullyingDTO.class);
+        return modelMapper.map(bullying, BullyingDTO.class);
     }
 
 }
