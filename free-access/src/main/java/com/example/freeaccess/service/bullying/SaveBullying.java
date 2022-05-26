@@ -30,6 +30,5 @@ public class SaveBullying {
         bullying = this.repository.save(bullying);
 
         return modelMapper.map(bullying, BullyingDTO.class);
-
     }
 }

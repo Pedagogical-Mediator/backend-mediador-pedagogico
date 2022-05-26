@@ -21,11 +21,11 @@ public class UpdateBullying {
         Bullying bullying = this.repository.findAll().stream().findAny().orElse(new Bullying());
 
         bullyingDTO.setId(bullying.getId());
-        modelMapper.map(bullyingDTO, bullying);
+        this.modelMapper.map(bullyingDTO, bullying);
 
         bullying = this.repository.save(bullying);
 
-        return modelMapper.map(bullying, BullyingDTO.class);
+        return this.modelMapper.map(bullying, BullyingDTO.class);
     }
 
 }

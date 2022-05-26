@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class CalendarIntegrationTest {
 
+    public static final String PATH = "/school/calendar";
     @Autowired
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -31,7 +32,7 @@ class CalendarIntegrationTest {
         CalendarDTO calendarDTO = new CalendarDTO(1, "http://localhost:8080");
 
         String calendarDTOJSON = objectMapper.writeValueAsString(calendarDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/calendar").contentType(MediaType.APPLICATION_JSON).content(calendarDTOJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(calendarDTOJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
         CalendarDTO returnCalendar = objectMapper.readValue(response.getContentAsString(), CalendarDTO.class);
@@ -46,7 +47,7 @@ class CalendarIntegrationTest {
         CalendarDTO calendarDTO = new CalendarDTO(1, null);
 
         String calendarDTOJSON = objectMapper.writeValueAsString(calendarDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/calendar").contentType(MediaType.APPLICATION_JSON).content(calendarDTOJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(calendarDTOJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
 
@@ -55,10 +56,10 @@ class CalendarIntegrationTest {
 
     @Test
     public void shouldNotSaveABullyingWhenABullyingWasAlreadyStored() throws Exception {
-        CalendarDTO calendarDTO = new CalendarDTO(1, "localhost:8080");
+        CalendarDTO calendarDTO = new CalendarDTO(1, "http://localhost:8080");
 
         String bullyingInJSON = objectMapper.writeValueAsString(calendarDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/calendar").contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
 

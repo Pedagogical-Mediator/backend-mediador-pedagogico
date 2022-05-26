@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class BullyingIntegrationTest {
 
+    public static final String PATH = "/school/bullying";
     @Autowired
     private MockMvc mockMvc;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -31,7 +32,7 @@ class BullyingIntegrationTest {
         BullyingDTO bullyingDTO = new BullyingDTO(null, "This is the description of bullying information", "image in base64", "http://localhost:8080");
 
         String bullyingInJSON = objectMapper.writeValueAsString(bullyingDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/bullying").contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
         BullyingDTO returnedBullying = objectMapper.readValue(response.getContentAsString(), BullyingDTO.class);
@@ -46,7 +47,7 @@ class BullyingIntegrationTest {
         BullyingDTO bullyingDTO = new BullyingDTO(null, null, "image", "http://localhost:8080");
 
         String bullyingInJSON = objectMapper.writeValueAsString(bullyingDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/bullying").contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
 
@@ -58,7 +59,7 @@ class BullyingIntegrationTest {
         BullyingDTO bullyingDTO = new BullyingDTO(null, "description", "image", null);
 
         String bullyingInJSON = objectMapper.writeValueAsString(bullyingDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/bullying").contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
 
@@ -70,7 +71,7 @@ class BullyingIntegrationTest {
         BullyingDTO bullyingDTO = new BullyingDTO(null, "This is the description of bullying information", "image in base64", "http://localhost:8080");
 
         String bullyingInJSON = objectMapper.writeValueAsString(bullyingDTO);
-        RequestBuilder request = MockMvcRequestBuilders.post("/school/bullying").contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
+        RequestBuilder request = MockMvcRequestBuilders.post(PATH).contentType(MediaType.APPLICATION_JSON).content(bullyingInJSON);
 
         MockHttpServletResponse response = mockMvc.perform(request).andReturn().getResponse();
 
